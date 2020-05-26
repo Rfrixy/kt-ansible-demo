@@ -1,0 +1,5 @@
+all:
+  hosts:
+    kt_server:
+      ansible_host: 206.189.132.222
+      ansible_user: root

@@ -1,0 +1,42 @@
+---
+- hosts:
+    - kt_server
+  vars:
+    your_name: "test"
+    repo: git@github.com:Rfrixy/kt-ansible-static.git
+    project_directory: "/var/www-data/kt-ansible/{{ your_name }}"
+  tasks:
+    - name: Make the directory
+      file:
+        path: "{{ project_directory }}"
+        state: directory
+
+    - name: Clone the repository
+      git:
+        repo: "{{ repo }}"
+        dest: "{{ project_directory }}/kt-ansible-static"
+
+    - name: Add in your name to the website
+      lineinfile:
+        path: "{{ project_directory }}/kt-ansible-static/scripts.js"
+        regexp: "name ="
+        line: "const name = {{ your_name }}"
+
+    - name: Make the nginx directory
+      file:
+        path: "/etc/nginx/conf.d/kt"
+        state: directory
+
+    - name: Add nginx config
+      template:
+        src: nginx.j2
+        dest: "/etc/nginx/conf.d/kt/{{ your_name }}.conf"
+      notify:
+        - reload nginx
+
+  handlers:
+    - name: reload nginx
+      service:
+        name: nginx
+        state: reloaded
+      become: yes
