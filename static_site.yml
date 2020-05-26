@@ -1,10 +1,12 @@
 ---
 - hosts:
     - kt_server
+
   vars:
     your_name: "test"
     repo: git@github.com:Rfrixy/kt-ansible-static.git
     project_directory: "/var/www-data/kt-ansible/{{ your_name }}"
+
   tasks:
     - name: Make the directory
       file:
@@ -20,7 +22,7 @@
       lineinfile:
         path: "{{ project_directory }}/kt-ansible-static/scripts.js"
         regexp: "name ="
-        line: "const name = {{ your_name }}"
+        line: 'const name = "{{ your_name }}"'
 
     - name: Make the nginx directory
       file:
