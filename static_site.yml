@@ -13,8 +13,10 @@
 
   tasks:
     # TODO 2.1: Make the project directory
+    - name: Make the project directory
 
     # TODO 2.2: Clone the static website repository
+    - name: Clone the static website repository
 
     - name: Add in your name to the website
       lineinfile:
