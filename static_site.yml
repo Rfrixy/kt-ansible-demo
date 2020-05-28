@@ -8,7 +8,7 @@
     # If your name contains a space, or perhaps an exclamation mark, please replace it with something suitable.)
     # If your name is a common one, feel free to add a uuid to your name.
     your_name: "test"
-    repo: git@github.com:Rfrixy/kt-ansible-static.git
+    repo: https://github.com/Rfrixy/kt-ansible-static.git
     project_directory: "/var/www-data/kt-ansible/{{ your_name }}"
 
   tasks:
