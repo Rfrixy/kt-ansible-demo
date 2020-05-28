@@ -1,0 +1,42 @@
+---
+- hosts:
+    - kt_server
+
+  vars:
+    # TODO 1: Update your_name with your name.
+    # Please use a url-friendly name, no spaces.
+    # If your name contains a space, or perhaps an exclamation mark, please replace it with something suitable.)
+    your_name: "test"
+    repo: git@github.com:Rfrixy/kt-ansible-static.git
+    project_directory: "/var/www-data/kt-ansible/{{ your_name }}"
+
+  tasks:
+    # TODO 2.1: Make the project directory
+
+    # TODO 2.2: Clone the static website repository
+
+    - name: Add in your name to the website
+      lineinfile:
+        path: "{{ project_directory }}/kt-ansible-static/scripts.js"
+        regexp: "name ="
+        line: 'const name = "{{ your_name }}"'
+
+    - name: Make the nginx directory
+      file:
+        path: "/etc/nginx/conf.d/kt"
+        state: directory
+
+    # TODO 3.1: nginx.j2 to templates (refer the google doc)
+    # TODO 3.2: Notify the reload nginx handler (within this task)
+    - name: Add nginx config
+      template:
+        src: nginx.j2
+        dest: "/etc/nginx/conf.d/kt/{{ your_name }}.conf"
+
+  handlers:
+    - name: reload nginx
+      service:
+        name: nginx
+        state: reloaded
+      become: yes
+# TODO 4: Visit your website at `your_name`.divyanshu.run :)
