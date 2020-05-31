@@ -19,10 +19,9 @@
     - name: Clone the static website repository
 
     - name: Add in your name to the website
-      lineinfile:
-        path: "{{ project_directory }}/kt-ansible-static/scripts.js"
-        regexp: "name ="
-        line: 'const name = "{{ your_name }}"'
+      copy:
+        dest: "{{ project_directory }}/kt-ansible-static/name.js"
+        content: const name='{{ your_name }}'
 
     - name: Make the nginx directory
       file:
@@ -43,4 +42,5 @@
         state: reloaded
       become: yes
 # TODO 4.1: Run the playbook by running `ansible-playbook static_site.yml` in your cli
-# TODO 4.2: Visit your website at `your_name`.divyanshu.run and let everyone you're done by sharing your url in the meet :)
+# TODO 4.2: Visit your website at `your_name`.divyanshu.run ..
+#           ... and let everyone you're done by sharing your url in the meet :)
