@@ -3,7 +3,7 @@
     - kt_server
 
   vars:
-    your_name: "test"
+    your_name: "solution"
     repo: git@github.com:Rfrixy/kt-ansible-static.git
     project_directory: "/var/www-data/kt-ansible/{{ your_name }}"
 
@@ -19,10 +19,9 @@
         dest: "{{ project_directory }}/kt-ansible-static"
 
     - name: Add in your name to the website
-      lineinfile:
-        path: "{{ project_directory }}/kt-ansible-static/scripts.js"
-        regexp: "name ="
-        line: 'const name = "{{ your_name }}"'
+      copy:
+        dest: "{{ project_directory }}/kt-ansible-static/name.js"
+        content: const name='{{ your_name }}'
 
     - name: Make the nginx directory
       file:
