@@ -8,7 +8,7 @@
     project_directory: "/var/www-data/kt-ansible/{{ your_name }}"
 
   tasks:
-    - name: Make the directory
+    - name: Make the project directory
       file:
         path: "{{ project_directory }}"
         state: directory
