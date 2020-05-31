@@ -4,7 +4,7 @@
 
   vars:
     your_name: "solution"
-    repo: git@github.com:Rfrixy/kt-ansible-static.git
+    repo: https://github.com/Rfrixy/kt-ansible-demo.git
     project_directory: "/var/www-data/kt-ansible/{{ your_name }}"
 
   tasks:
