@@ -3,7 +3,7 @@
     - kt_server
 
   vars:
-    your_name: "solution"
+    your_name: "solution2"
     repo: https://github.com/Rfrixy/kt-ansible-demo.git
     project_directory: "/var/www-data/kt-ansible/{{ your_name }}"
 
@@ -32,8 +32,6 @@
       template:
         src: nginx.j2
         dest: "/etc/nginx/conf.d/kt/{{ your_name }}.conf"
-      notify:
-        - reload nginx
 
     - name: reload nginx
       service:
