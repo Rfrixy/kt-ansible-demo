@@ -1,0 +1,11 @@
+server {  
+    listen 80;
+    server_name your_name.divyanshu.run; # TODO: this is a bug, your_name is not referring to the variable, fix this.
+    # Hint: check how project_directory is being used
+
+    root {{ project_directory }}/kt-ansible-static;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
