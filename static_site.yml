@@ -36,5 +36,5 @@
     - name: reload nginx
       service:
         name: nginx
-        state: relaoded
+        state: reloaded
       become: yes
