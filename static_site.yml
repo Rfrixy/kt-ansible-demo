@@ -35,9 +35,8 @@
       notify:
         - reload nginx
 
-  handlers:
     - name: reload nginx
       service:
         name: nginx
-        state: reloaded
+        state: relaoded
       become: yes
