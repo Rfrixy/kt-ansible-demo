@@ -11,7 +11,7 @@
     repo: https://github.com/Rfrixy/kt-ansible-static.git
     project_directory: "/var/www-data/kt-ansible/{{ your_name }}"
 
-  # TODO 2: There is a bug in nginx.j2 in the templates folder, update that and come back here
+  # TODO 2: There is a bug in nginx.j2 in the templates folder, fix that and come back here
   tasks:
     - name: Make the project directory
       file:
@@ -39,7 +39,7 @@
     - name: reload nginx
       service:
         name: nginx
-        state: started # TODO 4: This is a bug, state should not be started, it should be reloaded
+        state: started # TODO 4: This is a bug, state should not be started, it should be 'reloaded', refer https://docs.ansible.com/ansible/latest/modules/service_module.html
       become: yes
 # TODO 5.1: Run the playbook by running `ansible-playbook static_site.yml` in your cli
 # TODO 5.2: Visit your website at `your_name`.divyanshu.run ..
